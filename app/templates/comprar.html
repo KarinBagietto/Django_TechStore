@@ -7,11 +7,7 @@
     <div class="comprar-container">
         <div class="produto-detalhes">
             <div class="produto-foto-grande">
-                {% if produto.imagem_url %}
-                    <img src="{{ produto.imagem_url }}" alt="{{ produto.nome }}">
-                {% else %}
-                    <img src="{% static 'images/images.png' %}" alt="{{ produto.nome }}">
-                {% endif %}
+                <img src="{% static 'images/images.png' %}" alt="{{ produto.nome }}">
             </div>
             <div class="produto-info-detalhes">
                 <h1>{{ produto.nome }}</h1>

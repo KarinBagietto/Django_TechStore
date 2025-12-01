@@ -10,11 +10,7 @@
             {% for p in prods %}
                 <div class="produto-card">
                     <div class="produto-imagem">
-                        {% if p.imagem_url %}
-                            <img src="{{ p.imagem_url }}" alt="{{ p.nome }}">
-                        {% else %}
-                            <img src="{% static 'images/images.png' %}" alt="{{ p.nome }}">
-                        {% endif %}
+                        <img src="{% static 'images/images.png' %}" alt="{{ p.nome }}">
                     </div>
                     <div class="produto-info">
                         <h3>{{ p.nome }}</h3>
