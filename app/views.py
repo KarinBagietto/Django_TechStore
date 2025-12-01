@@ -95,12 +95,10 @@ def index(request):
     produtos_destaque = Produto.objects.filter(estoque__gt=0).order_by('-criado_em')[:6]
     if not produtos_destaque.exists():
         produtos_destaque = Produto.objects.all()[:6]
-    # Busca imagens do carrossel (apenas as ativas, ordenadas)
-    carousel_images = CarouselImage.objects.filter(ativo=True).order_by('ordem', '-criado_em')
+    # Carrossel agora usa imagens estáticas, não precisa buscar do banco
     context = {
         'pagina': pagina,
-        'produtos_destaque': produtos_destaque,
-        'carousel_images': carousel_images
+        'produtos_destaque': produtos_destaque
     }
     return render(request, 'index.html', context)
     

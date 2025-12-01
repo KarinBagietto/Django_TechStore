@@ -19,8 +19,13 @@
                     <p>{{ pagina.texto_sobre|linebreaks }}</p>
                 </div>
             {% else %}
-                <h1>Quem Somos</h1>
-                <p>Informações sobre a empresa serão exibidas aqui.</p>
+                <div class="sobre-imagem">
+                    <img src="{% static 'images/images.png' %}" alt="Sobre nós">
+                </div>
+                <div class="sobre-texto">
+                    <h1>Sobre Nós</h1>
+                    <p>Somos apaixonados por tecnologia e dedicados a levar até você os melhores eletrônicos com preço justo, qualidade garantida e atendimento diferenciado. Nossa missão é tornar a tecnologia acessível para todos, oferecendo produtos modernos, confiáveis e que realmente fazem a diferença no seu dia a dia. Desde o início, trabalhamos com o compromisso de unir inovação, segurança e transparência em cada etapa da compra. Aqui, você encontra uma seleção completa de smartphones, notebooks, acessórios, áudio, smartwatches e muito mais — sempre com garantia, procedência e alto desempenho.</p>
+                </div>
             {% endif %}
         </div>
     </section>
