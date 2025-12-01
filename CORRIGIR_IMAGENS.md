@@ -86,3 +86,4 @@ app/static/images/
 ├── carrossel_2.png     (slide 2 do carrossel)
 └── carrossel_3.png     (slide 3 do carrossel)
 ```
+

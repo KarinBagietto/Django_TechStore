@@ -7,7 +7,15 @@
     <div class="comprar-container">
         <div class="produto-detalhes">
             <div class="produto-foto-grande">
-                <img src="{% static 'images/images.png' %}" alt="{{ produto.nome }}">
+                {% if "playstation" in produto.nome|lower or "ps5" in produto.nome|lower or "playstation 5" in produto.nome|lower %}
+                    <img src="{% static 'images/PlayStation5.jpg' %}" alt="{{ produto.nome }}">
+                {% elif "samsung" in produto.nome|lower or "galaxy" in produto.nome|lower %}
+                    <img src="{% static 'images/Samsung_Galaxy.jpeg' %}" alt="{{ produto.nome }}">
+                {% elif "controle" in produto.nome|lower or "controller" in produto.nome|lower %}
+                    <img src="{% static 'images/Controlenovo.jpg' %}" alt="{{ produto.nome }}">
+                {% else %}
+                    <img src="{% static 'images/images.png' %}" alt="{{ produto.nome }}">
+                {% endif %}
             </div>
             <div class="produto-info-detalhes">
                 <h1>{{ produto.nome }}</h1>

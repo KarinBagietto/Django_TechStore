@@ -134,7 +134,15 @@
                 {% for produto in produtos_destaque %}
                     <div class="produto-card-destaque">
                         <div class="produto-imagem-destaque">
-                            <img src="{% static 'images/images.png' %}" alt="{{ produto.nome }}">
+                            {% if "playstation" in produto.nome|lower or "ps5" in produto.nome|lower or "playstation 5" in produto.nome|lower %}
+                                <img src="{% static 'images/PlayStation5.jpg' %}" alt="{{ produto.nome }}">
+                            {% elif "samsung" in produto.nome|lower or "galaxy" in produto.nome|lower %}
+                                <img src="{% static 'images/Samsung_Galaxy.jpeg' %}" alt="{{ produto.nome }}">
+                            {% elif "controle" in produto.nome|lower or "controller" in produto.nome|lower %}
+                                <img src="{% static 'images/Controlenovo.jpg' %}" alt="{{ produto.nome }}">
+                            {% else %}
+                                <img src="{% static 'images/images.png' %}" alt="{{ produto.nome }}">
+                            {% endif %}
                         </div>
                         <div class="produto-info-destaque">
                             <h3>{{ produto.nome }}</h3>
@@ -193,7 +201,7 @@
             <div class="sobre-resumo-card">
                 <div class="sobre-resumo-content">
                     <div class="sobre-resumo-imagem">
-                        <img src="{% static 'images/images.png' %}" alt="Sobre nós">
+                        <img src="{% static 'images/imagem_sobre.avif' %}" alt="Sobre nós">
                     </div>
                     <div class="sobre-resumo-texto">
                         <h2>Sobre Nós</h2>

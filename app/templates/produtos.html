@@ -10,7 +10,15 @@
             {% for p in prods %}
                 <div class="produto-card">
                     <div class="produto-imagem">
-                        <img src="{% static 'images/images.png' %}" alt="{{ p.nome }}">
+                        {% if "playstation" in p.nome|lower or "ps5" in p.nome|lower or "playstation 5" in p.nome|lower %}
+                            <img src="{% static 'images/PlayStation5.jpg' %}" alt="{{ p.nome }}">
+                        {% elif "samsung" in p.nome|lower or "galaxy" in p.nome|lower %}
+                            <img src="{% static 'images/Samsung_Galaxy.jpeg' %}" alt="{{ p.nome }}">
+                        {% elif "controle" in p.nome|lower or "controller" in p.nome|lower %}
+                            <img src="{% static 'images/Controlenovo.jpg' %}" alt="{{ p.nome }}">
+                        {% else %}
+                            <img src="{% static 'images/images.png' %}" alt="{{ p.nome }}">
+                        {% endif %}
                     </div>
                     <div class="produto-info">
                         <h3>{{ p.nome }}</h3>
