@@ -138,9 +138,8 @@ def editarDev(request, id_dev):
 
 # contatos
 def contato(request):
-    contatos = Contato.objects.all().values()
     pagina = Pagina.objects.first()
-    return render(request, 'contato.html', {'contatos': contatos, 'pagina': pagina})
+    return render(request, 'contato.html', {'pagina': pagina})
 
 def salvarContato(request):
     if request.method == 'POST':

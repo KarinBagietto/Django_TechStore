@@ -4,22 +4,22 @@
 
 /* Reset e Variáveis */
 :root {
-    --primary-color: #00ff88;
-    --secondary-color: #00d4ff;
-    --accent-color: #ff00ff;
-    --dark-bg: #0a0e27;
-    --darker-bg: #050810;
-    --card-bg: #1a1f3a;
-    --text-primary: #ffffff;
-    --text-secondary: #b0b0b0;
-    --neon-green: #00ff88;
-    --neon-blue: #00d4ff;
-    --neon-pink: #ff00ff;
-    --shadow-neon-green: 0 0 10px rgba(0, 255, 136, 0.5),
-                         0 0 20px rgba(0, 255, 136, 0.3),
-                         0 0 30px rgba(0, 255, 136, 0.2);
-    --shadow-neon-blue: 0 0 10px rgba(0, 212, 255, 0.5),
-                        0 0 20px rgba(0, 212, 255, 0.3);
+    /* Paleta profissional com cores mais vivas */
+    --primary-color: #22c55e;          /* verde vivo */
+    --secondary-color: #2563eb;        /* azul vivo */
+    --accent-color: #f97316;           /* laranja para destaques pontuais */
+    --dark-bg: #0f172a;
+    --darker-bg: #020617;
+    --card-bg: #ffffff;
+    --text-primary: #111827;
+    --text-secondary: #6b7280;
+
+    /* Variáveis legadas, mapeadas para a nova paleta */
+    --neon-green: var(--primary-color);
+    --neon-blue: var(--secondary-color);
+    --neon-pink: #e11d48;
+    --shadow-neon-green: 0 8px 24px rgba(15, 23, 42, 0.12);
+    --shadow-neon-blue: 0 6px 20px rgba(15, 23, 42, 0.10);
 }
 
 * {
@@ -30,7 +30,8 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #f8f9fa;
+    /* Fundo em tom pastel claro para não cansar a visão */
+    background: #f3f4f6; /* cinza pastel suave */
     color: #333;
     min-height: 100vh;
     line-height: 1.6;
@@ -79,7 +80,7 @@ header {
 }
 
 #title h1 {
-    color: #00a85a;
+    color: var(--primary-color);
     font-size: 24px;
     font-weight: 600;
     letter-spacing: -0.5px;
@@ -92,18 +93,18 @@ nav {
 }
 
 nav a {
-    color: #00a85a;
+    color: var(--primary-color);
     text-decoration: none;
     padding: 10px 18px;
     border-radius: 6px;
     transition: all 0.2s ease;
     font-weight: 500;
-    font-size: 15px;
+    font-size: 16px;
 }
 
 nav a:hover {
-    background: rgba(0, 168, 90, 0.1);
-    color: #008a4a;
+    background: rgba(34, 197, 94, 0.08);
+    color: #16a34a;
 }
 
 /* ============================================
@@ -121,7 +122,7 @@ main {
    ============================================ */
 
 .hero-section {
-    background: white;
+    background: #f9fafb; /* bem claro, ligeiramente diferente do body */
     padding: 60px 20px;
     margin-bottom: 60px;
 }
@@ -143,7 +144,7 @@ main {
 }
 
 .hero-intro {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 600;
     margin-bottom: 20px;
     line-height: 1.6;
@@ -152,7 +153,7 @@ main {
 }
 
 .hero-description {
-    font-size: 16px;
+    font-size: 17px;
     margin-bottom: 20px;
     color: #333;
     line-height: 1.8;
@@ -187,7 +188,7 @@ main {
 }
 
 .hero-cta-text {
-    font-size: 16px;
+    font-size: 17px;
     margin-top: 25px;
     margin-bottom: 20px;
     color: #333;
@@ -212,7 +213,7 @@ main {
 .btn-primary, .btn-comprar {
     display: inline-block;
     padding: 14px 32px;
-    background: #00a85a;
+    background: var(--primary-color);
     color: white;
     text-decoration: none;
     border-radius: 6px;
@@ -221,11 +222,11 @@ main {
     transition: all 0.3s ease;
     border: none;
     cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 168, 90, 0.2);
+    box-shadow: 0 4px 6px rgba(34, 197, 94, 0.18);
 }
 
 .btn-primary:hover, .btn-comprar:hover {
-    background: #008a4a;
+    background: #16a34a;
     transform: translateY(-2px);
     box-shadow: 0 6px 12px rgba(0, 168, 90, 0.3);
 }
@@ -234,18 +235,18 @@ main {
     display: inline-block;
     padding: 14px 32px;
     background: transparent;
-    color: #00a85a;
+    color: var(--primary-color);
     text-decoration: none;
     border-radius: 6px;
     font-weight: 600;
     font-size: 16px;
     transition: all 0.3s ease;
-    border: 2px solid #00a85a;
+    border: 2px solid var(--primary-color);
     cursor: pointer;
 }
 
 .btn-secondary:hover {
-    background: #00a85a;
+    background: var(--primary-color);
     color: white;
     transform: translateY(-2px);
 }
@@ -281,14 +282,19 @@ main {
     padding: 40px 0;
 }
 
+/* Títulos de seção mais discretos e elegantes */
 .section-title {
     text-align: center;
-    font-size: 42px;
-    margin-bottom: 50px;
-    background: linear-gradient(90deg, var(--neon-green), var(--neon-blue));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--text-primary);
+}
+
+.section-subtitle {
+    text-align: center;
+    font-size: 16px;
+    color: var(--text-secondary);
 }
 
 .produtos-grid {
@@ -300,17 +306,17 @@ main {
 
 .produto-card {
     background: var(--card-bg);
-    border: 2px solid rgba(0, 255, 136, 0.3);
-    border-radius: 15px;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
     overflow: hidden;
-    transition: all 0.3s ease;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.25s ease;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
 }
 
 .produto-card:hover {
-    transform: translateY(-10px);
-    border-color: var(--primary-color);
-    box-shadow: var(--shadow-neon-green);
+    transform: translateY(-4px);
+    border-color: rgba(148, 163, 184, 0.7);
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.18);
 }
 
 .produto-imagem {
@@ -372,10 +378,9 @@ main {
 }
 
 .preco {
-    font-size: 28px;
-    font-weight: bold;
-    color: var(--neon-green);
-    text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--primary-color);
 }
 
 .estoque {
@@ -396,7 +401,8 @@ main {
    ============================================ */
 
 .sobre-section {
-    padding: 40px 0;
+    padding: 60px 0;
+    background: var(--dark-bg); /* volta para o fundo escuro nessa área */
 }
 
 .sobre-container {
@@ -404,11 +410,11 @@ main {
     grid-template-columns: 1fr 1fr;
     gap: 40px;
     align-items: center;
-    background: var(--card-bg);
+    background: rgba(15, 23, 42, 0.96);
     padding: 40px;
     border-radius: 20px;
-    border: 2px solid rgba(0, 255, 136, 0.3);
-    box-shadow: var(--shadow-neon-green);
+    border: 1px solid rgba(148, 163, 184, 0.4);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.6);
 }
 
 .sobre-imagem {
@@ -425,13 +431,13 @@ main {
 }
 
 .sobre-texto h1 {
-    color: var(--neon-green);
+    color: #f9fafb;
     font-size: 36px;
     margin-bottom: 20px;
 }
 
 .sobre-texto p {
-    color: var(--text-secondary);
+    color: #e5e7eb;
     line-height: 1.8;
     font-size: 16px;
 }
@@ -455,8 +461,8 @@ main {
     background: var(--card-bg);
     padding: 30px;
     border-radius: 15px;
-    border: 2px solid rgba(0, 255, 136, 0.3);
-    box-shadow: var(--shadow-neon-green);
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.10);
 }
 
 .contato-info h1, .contato-form h2 {
@@ -914,7 +920,7 @@ main {
 }
 
 .login-footer a {
-    color: #00a85a;
+    color: var(--primary-color);
     text-decoration: none;
     font-weight: 600;
 }
@@ -1022,7 +1028,7 @@ main {
     background: #f8f9fa;
     padding: 20px;
     border-radius: 8px;
-    border-left: 4px solid #00a85a;
+    border-left: 4px solid var(--primary-color);
     transition: all 0.3s ease;
 }
 
@@ -1069,7 +1075,7 @@ main {
 
 .item-total {
     font-size: 18px;
-    color: #00a85a;
+    color: var(--primary-color);
     font-weight: 600;
     margin-top: 10px;
     padding-top: 10px;
@@ -1121,7 +1127,7 @@ main {
 
 .destaque-section {
     padding: 80px 0;
-    background: white;
+    background: #f9fafb;
 }
 
 .section-header {
@@ -1209,14 +1215,14 @@ main {
 .preco-destaque {
     font-size: 24px;
     font-weight: 700;
-    color: #00a85a;
+    color: var(--primary-color);
 }
 
 .btn-comprar-destaque {
     display: block;
     width: 100%;
     padding: 12px;
-    background: #00a85a;
+    background: var(--primary-color);
     color: white;
     text-align: center;
     text-decoration: none;
@@ -1239,17 +1245,17 @@ main {
     display: inline-block;
     padding: 14px 32px;
     background: transparent;
-    color: #00a85a;
+    color: var(--primary-color);
     text-decoration: none;
     border-radius: 6px;
     font-weight: 600;
     font-size: 16px;
     transition: all 0.3s ease;
-    border: 2px solid #00a85a;
+    border: 2px solid var(--primary-color);
 }
 
 .btn-ver-todos:hover {
-    background: #00a85a;
+    background: var(--primary-color);
     color: white;
     transform: translateY(-2px);
 }
@@ -1260,7 +1266,7 @@ main {
 
 .beneficios-section {
     padding: 80px 0;
-    background: #f8f9fa;
+    background: #f3f4f6;
 }
 
 .beneficios-grid {
@@ -1307,7 +1313,7 @@ main {
 
 .sobre-resumo-section {
     padding: 80px 0;
-    background: #f8f9fa;
+    background: #f3f4f6;
 }
 
 .sobre-resumo-card {
@@ -1385,7 +1391,8 @@ main {
 
 .cta-section {
     padding: 80px 0;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    /* Degradê mais forte e vivo, mantendo a mesma paleta */
+    background: linear-gradient(135deg, #1d4ed8 0%, #15803d 100%);
     color: white;
     text-align: center;
 }
@@ -1464,11 +1471,11 @@ footer {
 }
 
 .footer-section ul li a:hover {
-    color: #00a85a;
+    color: var(--primary-color);
 }
 
 .footer-section a {
-    color: #00a85a;
+    color: var(--primary-color);
     text-decoration: none;
 }
 
@@ -1522,12 +1529,12 @@ footer {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #00a85a;
+    background: var(--primary-color);
     border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #008a4a;
+    background: #16a34a;
 }
 
 /* ============================================

@@ -1,0 +1,137 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+{% block title %}Painel Geral | {{ block.super }}{% endblock %}
+
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+    <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
+    &rsaquo; Painel Geral
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="module">
+    <h2>Resumo geral</h2>
+    <div class="dashboard-cards">
+        <div class="dashboard-card">
+            <span class="dashboard-label">Pedidos totais</span>
+            <strong class="dashboard-value">{{ total_pedidos }}</strong>
+        </div>
+        <div class="dashboard-card">
+            <span class="dashboard-label">Mensagens recebidas</span>
+            <strong class="dashboard-value">{{ total_contatos }}</strong>
+        </div>
+    </div>
+</div>
+
+<div class="module">
+    <h2>Histórico de pedidos</h2>
+    {% if pedidos %}
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Usuário</th>
+                    <th>Produto</th>
+                    <th>Qtd.</th>
+                    <th>Total</th>
+                    <th>Data</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for pedido in pedidos %}
+                <tr>
+                    <td>{{ pedido.id }}</td>
+                    <td>{{ pedido.usuario.get_full_name|default:pedido.usuario.username }}</td>
+                    <td>{{ pedido.produto.nome }}</td>
+                    <td>{{ pedido.quantidade }}</td>
+                    <td>R$ {{ pedido.total|floatformat:2 }}</td>
+                    <td>{{ pedido.data|date:"d/m/Y H:i" }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p class="empty">Nenhum pedido registrado.</p>
+    {% endif %}
+</div>
+
+<div class="module">
+    <h2>Mensagens de contato</h2>
+    {% if contatos %}
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Mensagem</th>
+                    <th>Recebido em</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for contato in contatos %}
+                <tr>
+                    <td>{{ contato.nome }}</td>
+                    <td><a href="mailto:{{ contato.email }}">{{ contato.email }}</a></td>
+                    <td>{{ contato.mensagem|linebreaksbr }}</td>
+                    <td>{{ contato.criado_em|date:"d/m/Y H:i" }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p class="empty">Nenhuma mensagem recebida.</p>
+    {% endif %}
+</div>
+
+<style>
+    .dashboard-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 16px;
+        margin-bottom: 16px;
+    }
+    .dashboard-card {
+        padding: 18px;
+        background: #f8f8f8;
+        border: 1px solid #dcdcdc;
+        border-radius: 6px;
+    }
+    .dashboard-label {
+        font-size: 13px;
+        color: #666;
+        text-transform: uppercase;
+        letter-spacing: .05em;
+    }
+    .dashboard-value {
+        display: block;
+        margin-top: 6px;
+        font-size: 26px;
+        color: #2c3e50;
+    }
+    .admin-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    .admin-table th,
+    .admin-table td {
+        border: 1px solid #dcdcdc;
+        padding: 10px 12px;
+        vertical-align: top;
+    }
+    .admin-table th {
+        background: #f0f0f0;
+        text-align: left;
+        font-weight: 600;
+    }
+    .admin-table tbody tr:nth-child(even) {
+        background: #fafafa;
+    }
+    .empty {
+        padding: 12px 0;
+        color: #777;
+    }
+</style>
+{% endblock %}
+

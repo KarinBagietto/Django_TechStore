@@ -9,7 +9,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Segurança
 SECRET_KEY = os.getenv('SECRET_KEY', 'sua-chave-padrao-para-dev')
-DEBUG = os.getenv('DEBUG', 'False') == 'True'
+# Em desenvolvimento, deixe DEBUG=True por padrão.
+# Em produção (Render), a envvar DEBUG=False já está configurada no render.yaml.
+DEBUG = os.getenv('DEBUG', 'True') == 'True'
 
 ALLOWED_HOSTS = ['*']  # ou ['techstore.onrender.com'] se quiser restringir
 

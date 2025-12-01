@@ -12,7 +12,7 @@
                 <div class="carousel-slides" id="carouselSlides">
                     {% for image in carousel_images %}
                     <div class="carousel-slide {% if forloop.first %}active{% endif %}">
-                        <img src="{{ image.imagem.url }}" alt="{{ image.titulo|default:'Imagem do carrossel' }}">
+                        <img src="{% if image.url_externa %}{{ image.url_externa }}{% elif image.imagem %}{{ image.imagem.url }}{% else %}https://via.placeholder.com/1200x600{% endif %}" alt="{{ image.titulo|default:'Imagem do carrossel' }}">
                         {% if image.titulo or image.descricao %}
                         <div class="carousel-caption">
                             {% if image.titulo %}
@@ -27,16 +27,15 @@
                     {% endfor %}
                 </div>
                 {% if carousel_images|length > 1 %}
-                <button class="carousel-btn carousel-prev" onclick="changeSlide(-1)">&#10094;</button>
-                <button class="carousel-btn carousel-next" onclick="changeSlide(1)">&#10095;</button>
-                <div class="carousel-indicators">
-                    {% for image in carousel_images %}
-                    <span class="indicator {% if forloop.first %}active{% endif %}" onclick="goToSlide({{ forloop.counter0 }})"></span>
-                    {% endfor %}
-                </div>
+                    <button class="carousel-btn carousel-prev" onclick="changeSlide(-1)">&#10094;</button>
+                    <button class="carousel-btn carousel-next" onclick="changeSlide(1)">&#10095;</button>
+                    <div class="carousel-indicators">
+                        {% for image in carousel_images %}
+                            <span class="indicator{% if forloop.first %} active{% endif %}" onclick="goToSlide({{ forloop.counter0 }})"></span>
+                        {% endfor %}
+                    </div>
                 {% endif %}
             </div>
-        </div>
     </section>
     {% endif %}
 
@@ -46,28 +45,32 @@
             <div class="hero-content">
                 {% if pagina %}
                     <div class="hero-text-content">
-                        <p class="hero-intro">{{ pagina.texto_chamada }}</p>
+                        <p class="hero-intro">
+                            Na <strong>TechStore</strong>, você encontra as melhores soluções em tecnologia com qualidade, segurança e preço justo.
+                        </p>
                         
                         <p class="hero-description">
-                            Aqui você encontra smartphones, notebooks, acessórios, smartwatches, fones, caixas de som, periféricos e muito mais, tudo selecionado com rigor para entregar a melhor experiência possível.
+                            Na <strong>TechStore</strong>, você encontra as melhores soluções em tecnologia com qualidade, segurança e preço justo. Oferecemos uma linha completa de smartphones, notebooks, acessórios, smartwatches, fones, caixas de som, periféricos e muito mais — sempre com garantia, procedência e alto desempenho.
                         </p>
                         
                         <div class="beneficios-lista">
                             <h3 class="beneficios-titulo">Por que comprar conosco?</h3>
                             <ul class="beneficios-items">
-                                <li>✓ Produtos 100% originais e com garantia</li>
-                                <li>✓ Preços competitivos e promoções exclusivas</li>
-                                <li>✓ Envio rápido para todo o Brasil</li>
-                                <li>✓ Atendimento humanizado e suporte especializado</li>
+                                <li>✓ Produtos 100% originais, com garantia e procedência</li>
+                                <li>✓ Preços competitivos e promoções realmente especiais</li>
+                                <li>✓ Envio rápido e seguro para todo o Brasil</li>
+                                <li>✓ Atendimento humanizado e suporte dedicado</li>
                                 <li>✓ Pagamentos seguros e diversas formas de pagamento</li>
                             </ul>
                         </div>
                         
                         <p class="hero-description">
-                            Tecnologia que transforma seu dia a dia. Acreditamos que a tecnologia deve facilitar sua vida. Por isso, oferecemos dispositivos modernos, de alta performance e com excelente custo-benefício — perfeitos para trabalho, estudos ou lazer. Explore nosso catálogo e descubra as melhores oportunidades para turbinar sua rotina com o que há de mais avançado no mundo dos eletrônicos.
+                            Nosso compromisso é oferecer uma experiência de compra moderna, rápida e transparente. Tecnologia que simplifica seu dia a dia, acompanha você no trabalho, nos estudos e no lazer — sempre com a confiança de ter escolhido a loja certa.
                         </p>
                         
-                        <p class="hero-cta-text">Descubra os melhores produtos eletrônicos com tecnologia de ponta e os melhores preços do mercado.</p>
+                        <p class="hero-cta-text">
+                            Explore nosso catálogo e descubra oportunidades únicas para turbinar sua rotina com o que há de mais avançado no mundo dos eletrônicos.
+                        </p>
                     </div>
                     
                     <div class="hero-buttons">
@@ -76,28 +79,32 @@
                     </div>
                 {% else %}
                     <div class="hero-text-content">
-                        <p class="hero-intro">A melhor tecnologia, com o melhor preço. Bem-vindo à sua loja de eletrônicos, o lugar ideal para quem busca inovação, qualidade e segurança na hora de comprar.</p>
+                        <p class="hero-intro">
+                            A melhor tecnologia, com o melhor preço. Bem-vindo à <strong>TechStore</strong>, a loja ideal para quem busca inovação, qualidade e segurança na hora de comprar.
+                        </p>
                         
                         <p class="hero-description">
-                            Aqui você encontra smartphones, notebooks, acessórios, smartwatches, fones, caixas de som, periféricos e muito mais, tudo selecionado com rigor para entregar a melhor experiência possível.
+                            Aqui você encontra smartphones, notebooks, acessórios, smartwatches, fones, caixas de som, periféricos e muito mais — tudo selecionado com rigor para entregar a melhor experiência possível, sempre com garantia e suporte dedicado.
                         </p>
                         
                         <div class="beneficios-lista">
                             <h3 class="beneficios-titulo">Por que comprar conosco?</h3>
                             <ul class="beneficios-items">
-                                <li>✓ Produtos 100% originais e com garantia</li>
-                                <li>✓ Preços competitivos e promoções exclusivas</li>
-                                <li>✓ Envio rápido para todo o Brasil</li>
-                                <li>✓ Atendimento humanizado e suporte especializado</li>
+                                <li>✓ Produtos 100% originais, com garantia e procedência</li>
+                                <li>✓ Preços competitivos e promoções realmente especiais</li>
+                                <li>✓ Envio rápido e seguro para todo o Brasil</li>
+                                <li>✓ Atendimento humanizado e suporte dedicado</li>
                                 <li>✓ Pagamentos seguros e diversas formas de pagamento</li>
                             </ul>
                         </div>
                         
                         <p class="hero-description">
-                            Tecnologia que transforma seu dia a dia. Acreditamos que a tecnologia deve facilitar sua vida. Por isso, oferecemos dispositivos modernos, de alta performance e com excelente custo-benefício — perfeitos para trabalho, estudos ou lazer. Explore nosso catálogo e descubra as melhores oportunidades para turbinar sua rotina com o que há de mais avançado no mundo dos eletrônicos.
+                            Acreditamos que a tecnologia deve simplificar sua vida. Por isso, oferecemos dispositivos modernos, de alta performance e excelente custo-benefício — perfeitos para trabalho, estudo ou lazer.
                         </p>
                         
-                        <p class="hero-cta-text">Descubra os melhores produtos eletrônicos com tecnologia de ponta e os melhores preços do mercado.</p>
+                        <p class="hero-cta-text">
+                            Explore nosso catálogo e encontre as melhores oportunidades para turbinar seu dia a dia com eletrônicos de última geração.
+                        </p>
                     </div>
                     
                     <div class="hero-buttons">
@@ -516,7 +523,7 @@
             if (totalSlides > 1) {
                 autoPlayInterval = setInterval(() => {
                     changeSlide(1);
-                }, 5000);
+                }, 4000); // troca de slide a cada 4 segundos
             }
         }
         

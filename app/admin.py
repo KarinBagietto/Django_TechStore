@@ -104,8 +104,9 @@ class CarouselImageAdmin(admin.ModelAdmin):
     search_fields = ("titulo", "descricao")
     readonly_fields = ("criado_em",)
     fieldsets = (
-        ('Imagem', {
-            'fields': ('imagem',)
+        ('Imagem (Use URL Externa para Render)', {
+            'fields': ('url_externa', 'imagem'),
+            'description': 'Para produção no Render, use URL Externa (Cloudinary/Imgur). O campo Imagem é para desenvolvimento local.'
         }),
         ('Informações', {
             'fields': ('titulo', 'descricao')

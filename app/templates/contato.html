@@ -26,20 +26,5 @@
                 <a href="{% url 'salvarContato' %}" class="btn-primary">Enviar Mensagem</a>
             </div>
         </div>
-
-        {% if contatos %}
-            <div class="mensagens-recebidas">
-                <h2>Mensagens Recebidas</h2>
-                {% for contato in contatos %}
-                    <div class="mensagem-card">
-                        <p><strong>Nome:</strong> {{ contato.nome }}</p>
-                        <p><strong>Email:</strong> {{ contato.email }}</p>
-                        <p><strong>Mensagem:</strong> {{ contato.mensagem }}</p>
-                        <p><strong>Data:</strong> {{ contato.criado_em|date:"d/m/Y H:i" }}</p>
-                        <a href="{% url 'excluirContato' contato.id %}" class="btn-danger">Excluir</a>
-                    </div>
-                {% endfor %}
-            </div>
-        {% endif %}
     </section>
 {% endblock conteudo %}
