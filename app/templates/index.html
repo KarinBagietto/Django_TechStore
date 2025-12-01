@@ -133,15 +133,13 @@
             <div class="produtos-grid-destaque">
                 {% for produto in produtos_destaque %}
                     <div class="produto-card-destaque">
-                        {% if produto.foto %}
-                            <div class="produto-imagem-destaque">
-                                <img src="{{ produto.foto.url }}" alt="{{ produto.nome }}">
-                            </div>
-                        {% else %}
-                            <div class="produto-imagem-destaque">
+                        <div class="produto-imagem-destaque">
+                            {% if produto.imagem_url %}
+                                <img src="{{ produto.imagem_url }}" alt="{{ produto.nome }}">
+                            {% else %}
                                 <img src="{% static 'images/images.png' %}" alt="{{ produto.nome }}">
-                            </div>
-                        {% endif %}
+                            {% endif %}
+                        </div>
                         <div class="produto-info-destaque">
                             <h3>{{ produto.nome }}</h3>
                             <p class="produto-descricao-destaque">{{ produto.descricao|truncatewords:15 }}</p>
@@ -198,15 +196,9 @@
         <div class="container">
             <div class="sobre-resumo-card">
                 <div class="sobre-resumo-content">
-                    {% if pagina.imagem_sobre %}
-                        <div class="sobre-resumo-imagem">
-                            <img src="{{ pagina.imagem_sobre.url }}" alt="Sobre nós">
-                        </div>
-                    {% else %}
-                        <div class="sobre-resumo-imagem">
-                            <img src="{% static 'images/images.png' %}" alt="Sobre nós">
-                        </div>
-                    {% endif %}
+                    <div class="sobre-resumo-imagem">
+                        <img src="{% static 'images/images.png' %}" alt="Sobre nós">
+                    </div>
                     <div class="sobre-resumo-texto">
                         <h2>Sobre Nós</h2>
                         <p>{{ pagina.texto_sobre|truncatewords:50|linebreaks }}</p>

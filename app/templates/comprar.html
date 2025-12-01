@@ -6,15 +6,13 @@
 <section class="comprar-section">
     <div class="comprar-container">
         <div class="produto-detalhes">
-            {% if produto.foto %}
-                <div class="produto-foto-grande">
-                    <img src="{{ produto.foto.url }}" alt="{{ produto.nome }}">
-                </div>
-            {% else %}
-                <div class="produto-foto-grande">
+            <div class="produto-foto-grande">
+                {% if produto.imagem_url %}
+                    <img src="{{ produto.imagem_url }}" alt="{{ produto.nome }}">
+                {% else %}
                     <img src="{% static 'images/images.png' %}" alt="{{ produto.nome }}">
-                </div>
-            {% endif %}
+                {% endif %}
+            </div>
             <div class="produto-info-detalhes">
                 <h1>{{ produto.nome }}</h1>
                 <p class="produto-descricao-completa">{{ produto.descricao }}</p>

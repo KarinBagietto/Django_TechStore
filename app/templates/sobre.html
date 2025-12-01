@@ -8,11 +8,7 @@
         <div class="sobre-container">
             {% if pagina %}
                 <div class="sobre-imagem">
-                    {% if pagina.imagem_sobre %}
-                        <img src="{{ pagina.imagem_sobre.url }}" alt="Sobre nós">
-                    {% else %}
-                        <img src="{% static 'images/images.png' %}" alt="Sobre nós">
-                    {% endif %}
+                    <img src="{% static 'images/images.png' %}" alt="Sobre nós">
                 </div>
                 <div class="sobre-texto">
                     <h1>Sobre Nós</h1>

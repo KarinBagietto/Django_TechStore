@@ -15,11 +15,7 @@
     {% endif %}
     <header>
         <div id="title">
-            {% if pagina and pagina.logo_do_site %}
-                <img src="{{ pagina.logo_do_site.url }}" alt="Logo">
-            {% else %}
-                <img src="{% static 'images/images.png' %}" alt="Logo">
-            {% endif %}
+            <img src="{% static 'images/images.png' %}" alt="Logo">
             <h1>{% if pagina %}{{ pagina.nome_do_site }}{% else %}TechStore{% endif %}</h1>
         </div>
         <nav>
