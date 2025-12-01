@@ -5,39 +5,45 @@
 
 {% block conteudo %}
     <!-- Carrossel de Imagens -->
-    {% if carousel_images %}
     <section class="carousel-section">
         <div class="carousel-container">
             <div class="carousel-wrapper">
                 <div class="carousel-slides" id="carouselSlides">
-                    {% for image in carousel_images %}
-                    <div class="carousel-slide {% if forloop.first %}active{% endif %}">
-                        <img src="{% if image.url_externa %}{{ image.url_externa }}{% elif image.imagem %}{{ image.imagem.url }}{% else %}https://via.placeholder.com/1200x600{% endif %}" alt="{{ image.titulo|default:'Imagem do carrossel' }}">
-                        {% if image.titulo or image.descricao %}
+                    <!-- Slide 1 -->
+                    <div class="carousel-slide active">
+                        <img src="{% static 'images/slide1.jpg' %}" alt="TechStore - Melhores produtos eletrônicos">
                         <div class="carousel-caption">
-                            {% if image.titulo %}
-                            <h2>{{ image.titulo }}</h2>
-                            {% endif %}
-                            {% if image.descricao %}
-                            <p>{{ image.descricao }}</p>
-                            {% endif %}
+                            <h2>Tecnologia de Ponta</h2>
+                            <p>Os melhores produtos eletrônicos com qualidade e garantia</p>
                         </div>
-                        {% endif %}
                     </div>
-                    {% endfor %}
+                    <!-- Slide 2 -->
+                    <div class="carousel-slide">
+                        <img src="{% static 'images/slide2.jpg' %}" alt="TechStore - Preços competitivos">
+                        <div class="carousel-caption">
+                            <h2>Preços Competitivos</h2>
+                            <p>As melhores ofertas e promoções exclusivas para você</p>
+                        </div>
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="carousel-slide">
+                        <img src="{% static 'images/slide3.jpg' %}" alt="TechStore - Entrega rápida">
+                        <div class="carousel-caption">
+                            <h2>Entrega Rápida</h2>
+                            <p>Receba seus produtos com agilidade em todo o Brasil</p>
+                        </div>
+                    </div>
                 </div>
-                {% if carousel_images|length > 1 %}
-                    <button class="carousel-btn carousel-prev" onclick="changeSlide(-1)">&#10094;</button>
-                    <button class="carousel-btn carousel-next" onclick="changeSlide(1)">&#10095;</button>
-                    <div class="carousel-indicators">
-                        {% for image in carousel_images %}
-                            <span class="indicator{% if forloop.first %} active{% endif %}" onclick="goToSlide({{ forloop.counter0 }})"></span>
-                        {% endfor %}
-                    </div>
-                {% endif %}
+                <button class="carousel-btn carousel-prev" onclick="changeSlide(-1)">&#10094;</button>
+                <button class="carousel-btn carousel-next" onclick="changeSlide(1)">&#10095;</button>
+                <div class="carousel-indicators">
+                    <span class="indicator active" onclick="goToSlide(0)"></span>
+                    <span class="indicator" onclick="goToSlide(1)"></span>
+                    <span class="indicator" onclick="goToSlide(2)"></span>
+                </div>
             </div>
+        </div>
     </section>
-    {% endif %}
 
     <!-- Hero Section -->
     <section class="hero-section">
