@@ -16,16 +16,32 @@ class Command(BaseCommand):
         email = 'reis@.com'
         password = '1234'
 
-        if not User.objects.filter(username=username).exists():
-            User.objects.create_superuser(
-                username=username,
-                email=email,
-                password=password
-            )
+        try:
+            # Tenta buscar o usuário existente
+            user = User.objects.filter(username=username).first()
+            
+            if user:
+                # Se existe, atualiza a senha e garante que é superusuário
+                user.set_password(password)
+                user.is_superuser = True
+                user.is_staff = True
+                user.email = email
+                user.save()
+                self.stdout.write(
+                    self.style.SUCCESS(f'✅ Superusuário "{username}" atualizado com sucesso!')
+                )
+            else:
+                # Se não existe, cria novo
+                User.objects.create_superuser(
+                    username=username,
+                    email=email,
+                    password=password
+                )
+                self.stdout.write(
+                    self.style.SUCCESS(f'✅ Superusuário "{username}" criado com sucesso!')
+                )
+        except Exception as e:
             self.stdout.write(
-                self.style.SUCCESS(f'✅ Superusuário "{username}" criado com sucesso!')
+                self.style.ERROR(f'❌ Erro ao criar/atualizar superusuário: {str(e)}')
             )
-        else:
-            self.stdout.write(
-                self.style.WARNING(f'ℹ️  Superusuário "{username}" já existe.')
-            )
+
