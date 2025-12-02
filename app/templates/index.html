@@ -467,6 +467,10 @@
             
             .carousel-slide img {
                 border-radius: 15px;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
             }
             
             .carousel-caption {
@@ -506,6 +510,10 @@
             
             .carousel-slide img {
                 border-radius: 12px;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
             }
             
             .carousel-caption {
@@ -537,67 +545,75 @@
     <script>
         let currentSlide = 0;
         let autoPlayInterval;
-        const slides = document.querySelectorAll('.carousel-slide');
-        const indicators = document.querySelectorAll('.indicator');
-        const totalSlides = slides.length;
+        let slides, indicators, totalSlides;
         
-        function showSlide(index) {
-            // Remove active de todos os slides e indicadores
-            slides.forEach(slide => slide.classList.remove('active'));
-            indicators.forEach(indicator => indicator.classList.remove('active'));
-            
-            // Adiciona active no slide e indicador atual
-            if (slides[index]) {
-                slides[index].classList.add('active');
-            }
-            if (indicators[index]) {
-                indicators[index].classList.add('active');
-            }
-        }
+        // Aguarda o DOM estar completamente carregado
+        document.addEventListener('DOMContentLoaded', function() {
+            slides = document.querySelectorAll('.carousel-slide');
+            indicators = document.querySelectorAll('.indicator');
+            totalSlides = slides.length;
         
-        function changeSlide(direction) {
-            currentSlide += direction;
-            
-            if (currentSlide >= totalSlides) {
-                currentSlide = 0;
-            } else if (currentSlide < 0) {
-                currentSlide = totalSlides - 1;
-            }
-            
-            showSlide(currentSlide);
-            resetAutoPlay();
-        }
-        
-        function goToSlide(index) {
-            currentSlide = index;
-            showSlide(currentSlide);
-            resetAutoPlay();
-        }
-        
-        function resetAutoPlay() {
-            clearInterval(autoPlayInterval);
-            if (totalSlides > 1) {
-                autoPlayInterval = setInterval(() => {
-                    changeSlide(1);
-                }, 4000); // troca de slide a cada 4 segundos
-            }
-        }
-        
-        // Auto-play do carrossel (muda a cada 5 segundos)
-        if (totalSlides > 1) {
-            resetAutoPlay();
-            
-            // Pausa o auto-play quando o mouse está sobre o carrossel
-            const carouselWrapper = document.querySelector('.carousel-wrapper');
-            if (carouselWrapper) {
-                carouselWrapper.addEventListener('mouseenter', () => {
-                    clearInterval(autoPlayInterval);
-                });
+            function showSlide(index) {
+                // Remove active de todos os slides e indicadores
+                slides.forEach(slide => slide.classList.remove('active'));
+                indicators.forEach(indicator => indicator.classList.remove('active'));
                 
-                carouselWrapper.addEventListener('mouseleave', () => {
-                    resetAutoPlay();
-                });
+                // Adiciona active no slide e indicador atual
+                if (slides[index]) {
+                    slides[index].classList.add('active');
+                }
+                if (indicators[index]) {
+                    indicators[index].classList.add('active');
+                }
             }
-        }
+            
+            function changeSlide(direction) {
+                currentSlide += direction;
+                
+                if (currentSlide >= totalSlides) {
+                    currentSlide = 0;
+                } else if (currentSlide < 0) {
+                    currentSlide = totalSlides - 1;
+                }
+                
+                showSlide(currentSlide);
+                resetAutoPlay();
+            }
+            
+            // Torna changeSlide e goToSlide globais para os botões onclick
+            window.changeSlide = changeSlide;
+            
+            window.goToSlide = function(index) {
+                currentSlide = index;
+                showSlide(currentSlide);
+                resetAutoPlay();
+            };
+            
+            function resetAutoPlay() {
+                clearInterval(autoPlayInterval);
+                if (totalSlides > 1) {
+                    autoPlayInterval = setInterval(() => {
+                        changeSlide(1);
+                    }, 4000); // troca de slide a cada 4 segundos
+                }
+            }
+            
+            // Auto-play do carrossel (muda a cada 4 segundos)
+            if (totalSlides > 1) {
+                resetAutoPlay();
+                
+                // Pausa o auto-play quando o mouse está sobre o carrossel
+                const carouselWrapper = document.querySelector('.carousel-wrapper');
+                if (carouselWrapper) {
+                    carouselWrapper.addEventListener('mouseenter', () => {
+                        clearInterval(autoPlayInterval);
+                    });
+                    
+                    carouselWrapper.addEventListener('mouseleave', () => {
+                        resetAutoPlay();
+                    });
+                }
+            }
+        });
     </script>
 {% endblock conteudo %}
