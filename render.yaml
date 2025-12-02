@@ -2,11 +2,25 @@ services:
   - type: web
     name: WEB-III-Exercicio-II-main
     env: python
+
     buildCommand: pip install -r requirements.txt
-    startCommand: python manage.py migrate && python create_superuser.py && gunicorn projeto.wsgi:application
+
+    startCommand: python manage.py migrate && python manage.py createsuperuser --noinput || true && gunicorn projeto.wsgi:application
+
     autoDeploy: true
+
     envVars:
       - key: DEBUG
         value: False
+
       - key: SECRET_KEY
         value: sua-chave-secreta-aqui
+
+      - key: DJANGO_SUPERUSER_USERNAME
+        value: esdrasreis
+
+      - key: DJANGO_SUPERUSER_EMAIL
+        value: karin_bagietto@hotmail.com
+
+      - key: DJANGO_SUPERUSER_PASSWORD
+        value: 1234
