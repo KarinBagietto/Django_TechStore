@@ -64,7 +64,7 @@ header {
 #title {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 6px; /* reduzido de 12px para 6px */
 }
 
 #title img {
@@ -80,7 +80,7 @@ header {
 }
 
 #title h1 {
-    color: var(--primary-color);
+    color: #0f172a; /* tom mais escuro (azul escuro) em vez do verde */
     font-size: 24px;
     font-weight: 600;
     letter-spacing: -0.5px;
@@ -284,6 +284,14 @@ main {
     margin: 0 auto;
     padding-left: 20px;
     padding-right: 20px;
+}
+
+.no-products {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text-secondary);
+    font-size: 18px;
+    grid-column: 1 / -1; /* ocupa toda a largura do grid */
 }
 
 /* Títulos de seção mais discretos e elegantes */

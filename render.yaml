@@ -3,7 +3,7 @@ services:
     name: WEB-III-Exercicio-II-main
     env: python
     buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn projeto.wsgi:application
+    startCommand: python manage.py migrate && python create_superuser.py && gunicorn projeto.wsgi:application
     autoDeploy: true
     envVars:
       - key: DEBUG
