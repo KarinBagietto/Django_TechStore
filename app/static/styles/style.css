@@ -5,14 +5,14 @@
 /* Reset e Variáveis */
 :root {
     /* Paleta profissional com cores mais vivas */
-    --primary-color: #22c55e;          /* verde vivo */
+    --primary-color: #15803d;          /* verde 2 tons mais escuro (era #22c55e) */
     --secondary-color: #2563eb;        /* azul vivo */
     --accent-color: #f97316;           /* laranja para destaques pontuais */
     --dark-bg: #0f172a;
     --darker-bg: #020617;
     --card-bg: #ffffff;
     --text-primary: #111827;
-    --text-secondary: #6b7280;
+    --text-secondary: #4b5563; /* cinza 2 tons mais escuro (era #6b7280) */
 
     /* Variáveis legadas, mapeadas para a nova paleta */
     --neon-green: var(--primary-color);
@@ -68,8 +68,8 @@ header {
 }
 
 #title img {
-    width: 45px;
-    height: 45px;
+    width: 90px; /* diminuído 2 tamanhos (era 110px) */
+    height: 90px; /* diminuído 2 tamanhos (era 110px) */
     border-radius: 6px;
     object-fit: cover;
     transition: transform 0.3s ease;
@@ -82,7 +82,7 @@ header {
 #title h1 {
     color: #0f172a; /* tom mais escuro (azul escuro) em vez do verde */
     font-size: 24px;
-    font-weight: 600;
+    font-weight: 700; /* negrito (era 600) */
     letter-spacing: -0.5px;
     margin: 0;
 }
@@ -98,13 +98,13 @@ nav a {
     padding: 10px 18px;
     border-radius: 6px;
     transition: all 0.2s ease;
-    font-weight: 500;
+    font-weight: 700; /* negrito (era 500) */
     font-size: 16px;
 }
 
 nav a:hover {
-    background: rgba(34, 197, 94, 0.08);
-    color: #16a34a;
+    background: rgba(21, 128, 61, 0.08); /* verde 2 tons mais escuro */
+    color: #166534; /* verde 2 tons mais escuro (era #16a34a) */
 }
 
 /* ============================================
@@ -222,13 +222,13 @@ main {
     transition: all 0.3s ease;
     border: none;
     cursor: pointer;
-    box-shadow: 0 4px 6px rgba(34, 197, 94, 0.18);
+    box-shadow: 0 4px 6px rgba(21, 128, 61, 0.18); /* verde 2 tons mais escuro */
 }
 
 .btn-primary:hover, .btn-comprar:hover {
-    background: #16a34a;
+    background: #166534; /* verde 2 tons mais escuro (era #16a34a) */
     transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0, 168, 90, 0.3);
+    box-shadow: 0 6px 12px rgba(0, 128, 68, 0.3); /* verde 2 tons mais escuro */
 }
 
 .btn-secondary {
@@ -249,6 +249,78 @@ main {
     background: var(--primary-color);
     color: white;
     transform: translateY(-2px);
+}
+
+/* ============================================
+   REDES SOCIAIS
+   ============================================ */
+
+.social-media-section {
+    margin-top: 40px;
+    text-align: center;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.social-media-title {
+    font-size: 16px;
+    color: #444; /* cinza 2 tons mais escuro (era #666) */
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.social-media-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.social-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #f3f4f6;
+    color: #0f172a;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.social-icon:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.social-icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* Cores específicas para cada rede social */
+.social-icon:nth-child(1):hover {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    color: white;
+}
+
+.social-icon:nth-child(2):hover {
+    background: #1877f2;
+    color: white;
+}
+
+.social-icon:nth-child(3):hover {
+    background: #000000;
+    color: white;
+}
+
+.social-icon:nth-child(4):hover {
+    background: #25d366;
+    color: white;
 }
 
 .btn-large {
@@ -734,7 +806,7 @@ main {
 .form-group textarea:focus {
     outline: none;
     border-color: #00a85a;
-    box-shadow: 0 0 0 3px rgba(0, 168, 90, 0.1);
+    box-shadow: 0 0 0 3px rgba(0, 128, 68, 0.1); /* verde 2 tons mais escuro */
 }
 
 /* ============================================
@@ -808,7 +880,7 @@ main {
 }
 
 .login-subtitle {
-    color: #666;
+    color: #444; /* cinza 2 tons mais escuro (era #666) */
     text-align: center;
     margin-bottom: 30px;
     font-size: 16px;
@@ -846,7 +918,7 @@ main {
 .login-form .form-group input:focus {
     outline: none;
     border-color: #00a85a;
-    box-shadow: 0 0 0 3px rgba(0, 168, 90, 0.1);
+    box-shadow: 0 0 0 3px rgba(0, 128, 68, 0.1); /* verde 2 tons mais escuro */
 }
 
 .btn-login {
@@ -931,7 +1003,7 @@ main {
 }
 
 .login-footer p {
-    color: #666;
+    color: #444; /* cinza 2 tons mais escuro (era #666) */
     font-size: 14px;
     margin: 0;
 }
@@ -948,7 +1020,7 @@ main {
 
 .form-help {
     display: block;
-    color: #666;
+    color: #444; /* cinza 2 tons mais escuro (era #666) */
     font-size: 12px;
     margin-top: 4px;
     line-height: 1.4;
@@ -1070,7 +1142,7 @@ main {
 }
 
 .item-date {
-    color: #666;
+    color: #444; /* cinza 2 tons mais escuro (era #666) */
     font-size: 14px;
     background: white;
     padding: 5px 12px;
@@ -1111,7 +1183,7 @@ main {
 
 .no-items {
     text-align: center;
-    color: #666;
+    color: #444; /* cinza 2 tons mais escuro (era #666) */
     padding: 40px;
     font-size: 16px;
 }
@@ -1161,7 +1233,7 @@ main {
 
 .section-subtitle {
     font-size: 18px;
-    color: #666;
+    color: #444; /* cinza 2 tons mais escuro (era #666) */
 }
 
 .produtos-grid-destaque {
@@ -1218,7 +1290,7 @@ main {
 }
 
 .produto-descricao-destaque {
-    color: #666;
+    color: #444; /* cinza 2 tons mais escuro (era #666) */
     font-size: 14px;
     line-height: 1.5;
     margin-bottom: 15px;
@@ -1319,7 +1391,7 @@ main {
 }
 
 .beneficio-card p {
-    color: #666;
+    color: #444; /* cinza 2 tons mais escuro (era #666) */
     line-height: 1.6;
     font-size: 15px;
 }
@@ -1381,7 +1453,7 @@ main {
 }
 
 .sobre-resumo-texto p {
-    color: #666;
+    color: #444; /* cinza 2 tons mais escuro (era #666) */
     line-height: 1.8;
     font-size: 16px;
     margin-bottom: 25px;
@@ -1551,7 +1623,7 @@ footer {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #16a34a;
+    background: #166534; /* verde 2 tons mais escuro (era #16a34a) */
 }
 
 /* ============================================
@@ -1565,6 +1637,11 @@ footer {
         padding: 15px 20px;
     }
 
+    #title img {
+        width: 70px; /* diminuído para mobile (era 85px) */
+        height: 70px;
+    }
+    
     #title h1 {
         font-size: 20px;
     }
@@ -1642,6 +1719,20 @@ footer {
     .btn-primary,
     .btn-secondary {
         width: 100%;
+    }
+    
+    .social-media-icons {
+        gap: 15px;
+    }
+    
+    .social-icon {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .social-icon svg {
+        width: 20px;
+        height: 20px;
     }
 
     .section-title {

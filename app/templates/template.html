@@ -56,12 +56,12 @@
                 </div>
                 <div class="footer-section">
                     <h4>Contato</h4>
+                    <p><strong>E-mail:</strong> <a href="mailto:contato@techstore.com.br">contato@techstore.com.br</a></p>
+                    <p><strong>Telefone:</strong> <a href="tel:+551134567890">(11) 3456-7890</a></p>
+                    <p><strong>WhatsApp:</strong> <a href="https://wa.me/551134567890" target="_blank">(11) 3456-7890</a></p>
+                    <p><strong>Instagram:</strong> <a href="https://www.instagram.com/techstore" target="_blank">@techstore</a></p>
                     {% if pagina %}
                         <p><strong>Endereço:</strong> {{ pagina.endereco }}</p>
-                        <p><strong>E-mail:</strong> <a href="mailto:{{ pagina.email }}">{{ pagina.email }}</a></p>
-                        <p><strong>WhatsApp:</strong> <a href="https://wa.me/{{ pagina.whatsapp }}" target="_blank">{{ pagina.whatsapp }}</a></p>
-                    {% else %}
-                        <p>Entre em contato conosco</p>
                     {% endif %}
                 </div>
             </div>

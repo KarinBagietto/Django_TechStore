@@ -5,18 +5,26 @@
         <div class="contato-container">
             <div class="contato-info">
                 <h1>Entre em Contato</h1>
+                <div class="info-item">
+                    <strong>E-mail:</strong>
+                    <p><a href="mailto:contato@techstore.com.br">contato@techstore.com.br</a></p>
+                </div>
+                <div class="info-item">
+                    <strong>Telefone:</strong>
+                    <p><a href="tel:+551134567890">(11) 3456-7890</a></p>
+                </div>
+                <div class="info-item">
+                    <strong>WhatsApp:</strong>
+                    <p><a href="https://wa.me/551134567890" target="_blank">(11) 3456-7890</a></p>
+                </div>
+                <div class="info-item">
+                    <strong>Instagram:</strong>
+                    <p><a href="https://www.instagram.com/techstore" target="_blank">@techstore</a></p>
+                </div>
                 {% if pagina %}
                     <div class="info-item">
                         <strong>Endereço:</strong>
                         <p>{{ pagina.endereco }}</p>
-                    </div>
-                    <div class="info-item">
-                        <strong>E-mail:</strong>
-                        <p><a href="mailto:{{ pagina.email }}">{{ pagina.email }}</a></p>
-                    </div>
-                    <div class="info-item">
-                        <strong>WhatsApp:</strong>
-                        <p><a href="https://wa.me/{{ pagina.whatsapp }}" target="_blank">{{ pagina.whatsapp }}</a></p>
                     </div>
                 {% endif %}
             </div>
